@@ -17,6 +17,9 @@ async function calculatePrice(zone, organizationId, totalDistance, itemType) {
     const extraDistance = totalDistance - pricing.base_distance_in_km;
     totalPrice += extraDistance * pricing.km_price;
   }
+  if(totalDistance <= pricing.base_distance_in_km) {
+    totalPrice += pricing.fix_price;
+  }
 
   totalPrice *= 100;
 
